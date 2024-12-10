@@ -1,0 +1,1 @@
+export { default as EventModal } from './ui/EventModal.vue';

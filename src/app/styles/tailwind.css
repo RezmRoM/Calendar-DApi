@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #4A90E2;
+  --background-color: #F8F9FA;
+  --text-color: #333;
+  --border-color: #E0E0E0;
+  --purple-gradient: linear-gradient(135deg, #9D7FE0 0%, #7559B5 100%);
+  --blue-gradient: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
+  --orange-gradient: linear-gradient(135deg, #F5A623 0%, #E09411 100%);
+  --green-gradient: linear-gradient(135deg, #2ECC71 0%, #27AE60 100%);
+  --pink-gradient: linear-gradient(135deg, #FF6B9B 0%, #FF4081 100%);
+}
+
+@layer components {
+  .fc {
+    @apply bg-white font-sans;
+  }
+
+  /* Стили для заголовка */
+  .fc-toolbar {
+    @apply p-4 flex items-center justify-between bg-white shadow-sm;
+  }
+
+  .fc-toolbar-title {
+    @apply text-2xl font-medium text-gray-800 px-4;
+  }
+
+  /* Базовые стили для всех кнопок календаря */
+  .fc-button {
+    @apply px-6 py-3 rounded-lg text-base font-medium 
+           transition-colors duration-200 ease-in-out min-h-[48px]
+           min-w-[130px] shadow-sm;
+  }
+
+  /* Основной стиль кнопок с градиентом */
+  .fc-button-primary {
+    @apply text-white font-medium
+           focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50;
+    background: var(--blue-gradient);
+  }
+
+  /* Активная кнопка */
+  .fc-button-active {
+    @apply shadow-inner opacity-90 !important;
+    background: var(--blue-gradient);
+  }
+
+  /* Кнопки влево/вправо */
+  .fc-prev-button,
+  .fc-next-button {
+    @apply p-3 min-w-[48px] h-[48px] flex items-center justify-center
+           text-white rounded-lg shadow-md !important;
+    background: var(--blue-gradient);
+  }
+
+  /* Кнопка "Сегодня" */
+  .fc-today-button {
+    @apply text-white min-w-[130px] text-[16px] font-medium
+           disabled:opacity-50 disabled:cursor-not-allowed
+           shadow-sm !important;
+    background: var(--blue-gradient);
+  }
+
+  /* Группа кнопок переключения вида */
+  .fc-button-group {
+    @apply flex gap-3;
+  }
+
+  /* Кнопки переключения вида (День, Неделя, Месяц) */
+  .fc-timeGridDay-button,
+  .fc-timeGridWeek-button,
+  .fc-dayGridMonth-button {
+    @apply px-8 py-3 text-white text-[16px] font-medium
+           transition-all duration-200 shadow-md 
+           min-w-[130px] rounded-lg !important;
+    background: var(--blue-gradient);
+  }
+
+  /* Эффект при наведении для всех кнопок */
+  .fc-button:hover {
+    @apply opacity-90 transform scale-105 transition-all duration-200;
+  }
+
+  /* Временная шкала */
+  .fc-timegrid {
+    @apply border-t border-gray-200;
+  }
+
+  .fc-timegrid-slot {
+    @apply h-12 border-gray-100;
+  }
+
+  .fc-timegrid-slot-label {
+    @apply text-sm text-gray-500 font-normal px-2;
+  }
+
+  .fc-slot-lane {
+    @apply border-b border-gray-100;
+  }
+
+  /* День недели */
+  .fc-col-header-cell {
+    @apply py-3 text-base font-medium text-gray-700 
+           bg-gray-50 border-b border-gray-200;
+  }
+
+  /* Иконки в кнопках навигации */
+  .fc-icon {
+    @apply inline-block w-6 h-6;
+  }
+
+  .fc-icon-chevron-left::before {
+    content: "←";
+    @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
+           text-xl font-bold;
+  }
+
+  .fc-icon-chevron-right::before {
+    content: "→";
+    @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
+           text-xl font-bold;
+  }
+}
+
+@media (max-width: 640px) {
+  .fc-toolbar {
+    @apply flex-col gap-4;
+  }
+  
+  .fc-button {
+    @apply px-4 py-2 text-sm min-h-[40px] min-w-[100px];
+  }
+  
+  .fc-timeGridDay-button,
+  .fc-timeGridWeek-button,
+  .fc-dayGridMonth-button {
+    @apply min-w-[100px] px-4 text-[14px];
+  }
+  
+  .fc-toolbar-title {
+    @apply text-xl px-2;
+  }
+}

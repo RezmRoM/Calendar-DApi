@@ -1,0 +1,1 @@
+export { default as FullCalendar } from './ui/FullCalendar.vue';
